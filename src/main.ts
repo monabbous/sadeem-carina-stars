@@ -1145,7 +1145,7 @@ mutationObserver.observe(document.documentElement, {
 	attributeFilter: ['lang'],
 })
 
-studentsLis.forEach((student, index) => {
+studentsLis.forEach((student) => {
 	// add mousewheel event to the students list
 	const accreditation = student.querySelector('.accreditation') as HTMLElement;
 	student.addEventListener('wheel', (event) => {

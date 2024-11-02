@@ -1,0 +1,37 @@
+/**
+
+    font face definition of 'KawkabMono' font for arabic based letters, where the fonts variations 'Bold', 'Light' and 'Regular' exists in the current directory, 
+    with 3 different extensions of eot, woff, and woff2.
+    the paths of the font files are structured as follows 'KawkabMono' + '-' + 'Bold' + '.' + 'eot' or 'woff' or 'woff2'.
+*/
+
+@font-face {
+    font-family: 'Kawkab Mono';
+    src: url('KawkabMono-Bold.eot');
+    src: url('KawkabMono-Bold.eot?#iefix') format('embedded-opentype'),
+         url('KawkabMono-Bold.woff2') format('woff2'),
+         url('KawkabMono-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kawkab Mono';
+    src: url('KawkabMono-Light.eot');
+    src: url('KawkabMono-Light.eot?#iefix') format('embedded-opentype'),
+         url('KawkabMono-Light.woff2') format('woff2'),
+         url('KawkabMono-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kawkab Mono';
+    src: url('KawkabMono-Regular.eot');
+    src: url('KawkabMono-Regular.eot?#iefix') format('embedded-opentype'),
+         url('KawkabMono-Regular.woff2') format('woff2'),
+         url('KawkabMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+

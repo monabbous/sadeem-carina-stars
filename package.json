@@ -1,0 +1,26 @@
+{
+  "name": "carina-degrees",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@mertasan/tailwindcss-variables": "^2.7.0",
+    "@types/three": "^0.169.0",
+    "autoprefixer": "^10.4.20",
+    "eruda": "^3.4.0",
+    "postcss": "^8.4.47",
+    "sass-embedded": "^1.80.3",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.8"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "three": "^0.169.0"
+  }
+}

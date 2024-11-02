@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.scss" />
+    <!-- src https://makkuk.com/kawkab-mono/ -->
+    <!-- <link rel="stylesheet" href="fonts/kawkab-mono/style.css" /> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almarai&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <main>
+      <header>
+        <h1>
+          <span>
+            سديم كارينا
+          </span>
+          <span>
+            Sadeem Carina
+          </span>
+        </h1>
+
+        <a href="#about">
+          <i class="fa-solid fa-info-circle"></i>
+          <!-- hide for the user but show for seo -->
+          <!-- <span class="w-0 h-0 overflow-hidden inline-block">عن المنصة</span> -->
+        </a>
+        
+        <button id="fullscreen">
+          <i class="fa-solid fa-expand"></i>
+          <i class="fa-solid fa-compress"></i>
+        </button>
+        <!-- <p>
+          كارينا هي منصة تدريب و ارشاد تم دعمها من قبل شركة سديم للتقنية و ايضا من
+          خلال دعم مطورين المنصة تم تكوين مجتمع متعاون و قادر على تطوير مهارات
+          المتدربين من خلال المنصة
+        </p> -->
+      </header>
+
+      <section id="about">
+        <a href="#" id="close-about">
+          <i class="fa-solid fa-times"></i>
+        </a>
+        لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل
+        وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم
+        ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة
+        برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل
+        أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل
+        انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر
+        بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق "ليتراسيت" (Letraset)
+        البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور
+        برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي
+        حوت أيضاً على نسخ من نص لوريم إيبسوم.
+      </section>
+    </main>
+
+    <!-- write new students in here -->
+    <ul id="students">
+      <li class="student" id="sara-assilawi" data-rate="85">
+        <h3 class="name">سارة السلاوي</h3>
+        <h4 class="role">مطورة ويب</h4>
+        <time class="time">2019</time>
+        <p class="accreditation">
+          قد تحصلت على تدريب صيفي بصورة مكثفة عن اساسيات تطوير برمجيات الويب تحت
+          اشراف نخبة من المهندسين, وذلك من ضمن مقررات اجتيازها درجة البكالوريوس
+          من تاريخ 20/8/2019 وحتى 30/10/2019 وهي مؤهلة الان للإنطلاق في تطوير
+          برمجيات الويب.
+        </p>
+      </li>
+      <li class="student" id="ahmed-ali" data-rate="90">
+        <h3 class="name">أحمد علي</h3>
+        <h4 class="role">مهندس برمجيات</h4>
+        <time class="time">2020</time>
+        <p class="accreditation">
+          أكمل أحمد برنامج تدريب مكثف في تطوير البرمجيات، حيث تعلم أساسيات
+          البرمجة وتصميم الأنظمة تحت إشراف مهندسين محترفين. أحمد الآن مستعد
+          للعمل في مشاريع تطوير البرمجيات.
+        </p>
+      </li>
+      <li class="student" id="fatima-hassan" data-rate="45">
+        <h3 class="name">فاطمة حسن</h3>
+        <h4 class="role">مصممة جرافيك</h4>
+        <time class="time">2021</time>
+        <p class="accreditation">
+          شاركت فاطمة في برنامج تدريب صيفي مكثف في تصميم الجرافيك، حيث اكتسبت
+          مهارات في تصميم الشعارات والرسوم التوضيحية. فاطمة الآن جاهزة للعمل
+          كمصممة جرافيك محترفة.
+        </p>
+      </li>
+      <li class="student" id="mohammed-salem" data-rate="80">
+        <h3 class="name">محمد سالم</h3>
+        <h4 class="role">محلل بيانات</h4>
+        <time class="time">2022</time>
+        <p class="accreditation">
+          أكمل محمد برنامج تدريب مكثف في تحليل البيانات، حيث تعلم كيفية تحليل
+          البيانات واستخراج المعلومات القيمة منها باستخدام أدوات تحليل البيانات
+          الحديثة. محمد الآن مؤهل للعمل كمحلل بيانات.
+        </p>
+      </li>
+      <li class="student" id="layla-hussein" data-rate="95">
+        <h3 class="name">ليلى حسين</h3>
+        <h4 class="role">مهندسة شبكات</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          شاركت ليلى في برنامج تدريب مكثف في هندسة الشبكات، حيث تعلمت كيفية
+          تصميم وإدارة الشبكات بكفاءة عالية. ليلى الآن جاهزة للعمل كمهندسة
+          شبكات.
+        </p>
+      </li>
+      <li class="student" id="omar-khaled" data-rate="40">
+        <h3 class="name">عمر خالد</h3>
+        <h4 class="role">مطور تطبيقات موبايل</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل عمر برنامج تدريب مكثف في تطوير تطبيقات الموبايل، حيث تعلم كيفية
+          بناء تطبيقات موبايل عالية الجودة باستخدام أحدث التقنيات. عمر الآن مؤهل
+          للعمل كمطور تطبيقات موبايل.
+        </p>
+      </li>
+      <li class="student" id="noura-alhassan" data-rate="92">
+        <h3 class="name">نورة الحسن</h3>
+        <h4 class="role">مهندسة برمجيات</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكملت نورة برنامج تدريب مكثف في هندسة البرمجيات، حيث تعلمت كيفية تصميم
+          وتطوير البرمجيات بكفاءة عالية. نورة الآن جاهزة للعمل كمهندسة برمجيات.
+        </p>
+      </li>
+      <li class="student" id="khalid-mohammed" data-rate="85">
+        <h3 class="name">خالد محمد</h3>
+        <h4 class="role">مطور ويب</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل خالد برنامج تدريب مكثف في تطوير الويب، حيث تعلم كيفية بناء مواقع
+          ويب تفاعلية باستخدام أحدث التقنيات. خالد الآن مؤهل للعمل كمطور ويب.
+        </p>
+      </li>
+      <li class="student" id="salma-ali" data-rate="78">
+        <h3 class="name">سلمى علي</h3>
+        <h4 class="role">مصممة واجهات المستخدم</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          شاركت سلمى في برنامج تدريب مكثف في تصميم واجهات المستخدم، حيث اكتسبت
+          مهارات في تصميم واجهات مستخدم جذابة وسهلة الاستخدام. سلمى الآن جاهزة
+          للعمل كمصممة واجهات المستخدم.
+        </p>
+      </li>
+      <li class="student" id="yousef-hassan" data-rate="91">
+        <h3 class="name">يوسف حسن</h3>
+        <h4 class="role">مهندس نظم</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل يوسف برنامج تدريب مكثف في هندسة النظم، حيث تعلم كيفية تصميم
+          وإدارة النظم بكفاءة عالية. يوسف الآن مؤهل للعمل كمهندس نظم.
+        </p>
+      </li>
+      <li class="student" id="reem-salem" data-rate="87">
+        <h3 class="name">ريم سالم</h3>
+        <h4 class="role">محللة نظم</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          شاركت ريم في برنامج تدريب مكثف في تحليل النظم، حيث تعلمت كيفية تحليل
+          وتصميم النظم بكفاءة عالية. ريم الآن جاهزة للعمل كمحللة نظم.
+        </p>
+      </li>
+      <li class="student" id="faisal-omar" data-rate="84">
+        <h3 class="name">فيصل عمر</h3>
+        <h4 class="role">مهندس شبكات</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل فيصل برنامج تدريب مكثف في هندسة الشبكات، حيث تعلم كيفية تصميم
+          وإدارة الشبكات بكفاءة عالية. فيصل الآن مؤهل للعمل كمهندس شبكات.
+        </p>
+      </li>
+      <li class="student" id="mona-ahmed" data-rate="89">
+        <h3 class="name">منى أحمد</h3>
+        <h4 class="role">مطورة تطبيقات موبايل</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          شاركت منى في برنامج تدريب مكثف في تطوير تطبيقات الموبايل، حيث تعلمت
+          كيفية بناء تطبيقات موبايل عالية الجودة باستخدام أحدث التقنيات. منى
+          الآن جاهزة للعمل كمطورة تطبيقات موبايل.
+        </p>
+      </li>
+      <li class="student" id="ali-hassan" data-rate="35">
+        <h3 class="name">علي حسن</h3>
+        <h4 class="role">مهندس بيانات</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل علي برنامج تدريب مكثف في هندسة البيانات، حيث تعلم كيفية تصميم
+          وإدارة قواعد البيانات بكفاءة عالية. علي الآن مؤهل للعمل كمهندس بيانات.
+        </p>
+      </li>
+      <li class="student" id="sara-mohammed" data-rate="77">
+        <h3 class="name">سارة محمد</h3>
+        <h4 class="role">مصممة جرافيك</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          شاركت سارة في برنامج تدريب مكثف في تصميم الجرافيك، حيث اكتسبت مهارات
+          في تصميم الشعارات والرسوم التوضيحية. سارة الآن جاهزة للعمل كمصممة
+          جرافيك.
+        </p>
+      </li>
+      <li class="student" id="hassan-ali" data-rate="86">
+        <h3 class="name">حسن علي</h3>
+        <h4 class="role">محلل بيانات</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل حسن برنامج تدريب مكثف في تحليل البيانات، حيث تعلم كيفية تحليل
+          البيانات واستخراج المعلومات القيمة منها باستخدام أدوات تحليل البيانات
+          الحديثة. حسن الآن مؤهل للعمل كمحلل بيانات.
+        </p>
+      </li>
+      <li class="student" id="layla-mohammed" data-rate="93">
+        <h3 class="name">ليلى محمد</h3>
+        <h4 class="role">مهندسة برمجيات</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكملت ليلى برنامج تدريب مكثف في هندسة البرمجيات، حيث تعلمت كيفية تصميم
+          وتطوير البرمجيات بكفاءة عالية. ليلى الآن جاهزة للعمل كمهندسة برمجيات.
+        </p>
+      </li>
+      <li class="student" id="omar-ali" data-rate="81">
+        <h3 class="name">عمر علي</h3>
+        <h4 class="role">مطور ويب</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل عمر برنامج تدريب مكثف في تطوير الويب، حيث تعلم كيفية بناء مواقع
+          ويب تفاعلية باستخدام أحدث التقنيات. عمر الآن مؤهل للعمل كمطور ويب.
+        </p>
+      </li>
+      <li class="student" id="fatima-salem" data-rate="100">
+        <h3 class="name">فاطمة سالم</h3>
+        <h4 class="role">مصممة واجهات المستخدم</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          شاركت فاطمة في برنامج تدريب مكثف في تصميم واجهات المستخدم، حيث اكتسبت
+          مهارات في تصميم واجهات مستخدم جذابة وسهلة الاستخدام. فاطمة الآن جاهزة
+          للعمل كمصممة واجهات المستخدم.
+        </p>
+      </li>
+      <li class="student" id="yousef-ali" data-rate="94">
+        <h3 class="name">يوسف علي</h3>
+        <h4 class="role">مهندس نظم</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل يوسف برنامج تدريب مكثف في هندسة النظم، حيث تعلم كيفية تصميم
+          وإدارة النظم بكفاءة عالية. يوسف الآن مؤهل للعمل كمهندس نظم.
+        </p>
+      </li>
+      <li class="student" id="reem-hassan" data-rate="79">
+        <h3 class="name">ريم حسن</h3>
+        <h4 class="role">محللة نظم</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          شاركت ريم في برنامج تدريب مكثف في تحليل النظم، حيث تعلمت كيفية تحليل
+          وتصميم النظم بكفاءة عالية. ريم الآن جاهزة للعمل كمحللة نظم.
+        </p>
+      </li>
+      <li class="student" id="faisal-salem" data-rate="83">
+        <h3 class="name">فيصل سالم</h3>
+        <h4 class="role">مهندس شبكات</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل فيصل برنامج تدريب مكثف في هندسة الشبكات، حيث تعلم كيفية تصميم
+          وإدارة الشبكات بكفاءة عالية. فيصل الآن مؤهل للعمل كمهندس شبكات.
+        </p>
+      </li>
+      <li class="student" id="mona-ali" data-rate="90">
+        <h3 class="name">منى علي</h3>
+        <h4 class="role">مطورة تطبيقات موبايل</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          شاركت منى في برنامج تدريب مكثف في تطوير تطبيقات الموبايل، حيث تعلمت
+          كيفية بناء تطبيقات موبايل عالية الجودة باستخدام أحدث التقنيات. منى
+          الآن جاهزة للعمل كمطورة تطبيقات موبايل.
+        </p>
+      </li>
+      <li class="student" id="ali-salem" data-rate="88">
+        <h3 class="name">علي سالم</h3>
+        <h4 class="role">مهندس بيانات</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل علي برنامج تدريب مكثف في هندسة البيانات، حيث تعلم كيفية تصميم
+          وإدارة قواعد البيانات بكفاءة عالية. علي الآن مؤهل للعمل كمهندس بيانات.
+        </p>
+      </li>
+      <li class="student" id="sara-hassan" data-rate="30">
+        <h3 class="name">سارة حسن</h3>
+        <h4 class="role">مصممة جرافيك</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          شاركت سارة في برنامج تدريب مكثف في تصميم الجرافيك، حيث اكتسبت مهارات
+          في تصميم الشعارات والرسوم التوضيحية. سارة الآن جاهزة للعمل كمصممة
+          جرافيك.
+        </p>
+      </li>
+      <li class="student" id="hassan-mohammed" data-rate="89">
+        <h3 class="name">حسن محمد</h3>
+        <h4 class="role">محلل بيانات</h4>
+        <time class="time">2023</time>
+        <p class="accreditation">
+          أكمل حسن برنامج تدريب مكثف في تحليل البيانات، حيث تعلم كيفية تحليل
+          البيانات واستخراج المعلومات القيمة منها باستخدام أدوات تحليل البيانات
+          الحديثة. حسن الآن مؤهل للعمل كمحلل بيانات.
+        </p>
+      </li>
+    </ul>
+    <div role="presentation" id="tooltip"></div>
+
+    <div id="actions">
+      <button id="next-student">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <button id="prev-student">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+    </div>
+
+    <script type="module" src="src/main.ts"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </body>
+</html>

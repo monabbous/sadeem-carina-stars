@@ -14,11 +14,11 @@ import { AfterimagePass, OutputPass, RenderPass, ShaderPass } from 'three/exampl
 
 
 // add eruda for debugging
-if (import.meta.env.MODE === 'development') {
-	import('eruda').then(({ default: eruda }) => {
-		eruda.init();
-	});
-}
+// if (import.meta.env.MODE === 'development') {
+// 	import('eruda').then(({ default: eruda }) => {
+// 		eruda.init();
+// 	});
+// }
 var debounce = (() => {
 	const timers = new Map();
 	return function (cb: Function, delay: number, key: string) {
@@ -103,7 +103,6 @@ const cameraAngles = {
 }
 
 const target = new THREE.Vector3();
-const currentCameraPosition = new THREE.Vector3();
 const currentCameraAngles = { ...cameraAngles };
 
 const CAMERA_CHANGE_DURATION = 3;
@@ -129,6 +128,7 @@ const cameraMomentDuration = 5;
 
 let cameraAnglesTween: gsap.core.Tween | undefined;
 let cameraMomentTween: gsap.core.Tween | undefined;
+let cameraFovTween: gsap.core.Tween | undefined;
 function setCameraMomentum(horizontal: number, vertical: number, duration = cameraMomentDuration) {
 	cameraMomentTween?.kill();
 	cameraMomentTween = gsap.to(
@@ -328,26 +328,36 @@ function setCameraAngles(
 }
 
 function polarToCartesian(
+	object: { x: number, y: number, z: number },
 	horizontal: number,
 	vertical: number,
 	radius: number,
 ) {
-	return {
-		y: Math.sin(vertical) * radius,
-		x: radius * Math.cos(horizontal),
-		z: radius * Math.sin(horizontal),
-	}
+	object.x = radius * Math.cos(horizontal) * Math.cos(vertical);
+	object.y = radius * Math.sin(vertical);
+	object.z = radius * Math.sin(horizontal) * Math.cos(vertical);
+
+	return object;
+	// return {
+	// 	y: Math.sin(vertical) * radius,
+	// 	x: radius * Math.cos(horizontal),
+	// 	z: radius * Math.sin(horizontal),
+	// }
 }
 
 // const targetAngle = new THREE.Vector3();
+
 function animate() {
 
 	if (!selectedObject) {
 
-		setCameraAngles(
-			cameraAngles.horizontal + (isPointerDown ? 0 : cameraAnglesMomentum.horizontal),
-			cameraAngles.vertical + (isPointerDown ? 0 : cameraAnglesMomentum.vertical),
-		)
+
+		if (cameraAnglesMomentum.horizontal || cameraAnglesMomentum.vertical) {
+			setCameraAngles(
+				cameraAngles.horizontal + (isPointerDown ? 0 : cameraAnglesMomentum.horizontal),
+				cameraAngles.vertical + (isPointerDown ? 0 : cameraAnglesMomentum.vertical),
+			)
+		}
 
 		cameraDefaultFov = 45;
 	} else if (selectedObject) {
@@ -381,23 +391,24 @@ function animate() {
 	}
 
 
-	currentCameraPosition.copy(
-		polarToCartesian(
-			currentCameraAngles.horizontal,
-			currentCameraAngles.vertical,
-			currentCameraAngles.radius,
-		)
+	polarToCartesian(
+		camera.position,
+		currentCameraAngles.horizontal,
+		currentCameraAngles.vertical,
+		currentCameraAngles.radius,
 	)
 
-	camera.position.copy(currentCameraPosition);
-
-	gsap.to(camera, {
-		fov: cameraDefaultFov,
-		duration: CAMERA_CHANGE_DURATION,
-		onUpdate: () => {
-			camera.updateProjectionMatrix();
-		}
-	})
+	if (cameraFovTween?.vars.fov !== cameraDefaultFov) {
+		cameraFovTween?.kill();
+		cameraFovTween = gsap.to(
+			camera, {
+			fov: cameraDefaultFov,
+			duration: CAMERA_CHANGE_DURATION,
+			onUpdate: () => {
+				camera.updateProjectionMatrix();
+			}
+		})
+	}
 
 	camera.lookAt(centerObject.position)
 

@@ -100,7 +100,8 @@ header {
 }
 
 a[href="#about"],
-button#fullscreen, #close-about {
+button#fullscreen,
+#close-about {
   @apply text-2xl;
   padding: 1em;
   margin: auto 0;
@@ -212,21 +213,33 @@ canvas {
     text-align: center;
   }
   .accreditation {
-    max-height: 100px;
-    overflow: auto;
+    max-height: 240px;
+    overflow-y: auto;
 
     .student-line {
       display: block;
-      margin: 16px 8px;
-      border-top: 1px solid white;
+      // margin: 16px 8px;
+      // border-top: 1px solid white;
+      border-image: radial-gradient(
+          50% 50% at 50% 125%,
+          currentColor 0%,
+          transparent 100%
+        )
+        1;
+      border-style: solid;
+      border-width: 2px;
+      height: 0px;
+      margin: 15px 0;
+      &:first-child {
+        position: sticky;
+        top: -2px;
+      }
     }
   }
 }
 
 .student,
 #tooltip {
-
-
   .time-container {
     text-align: center;
     display: inline-block;
@@ -265,7 +278,6 @@ canvas {
   color: white;
   justify-content: space-between;
   z-index: 9;
-
 
   button {
     @at-root :dir(ltr) & {

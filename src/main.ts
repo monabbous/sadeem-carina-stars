@@ -760,7 +760,7 @@ function selectObject(firstIntersect: THREE.Intersection | null, updateHash = tr
 				const distance = target.distanceTo(centerObject.position) + 3;
 				target.normalize();
 				const horizontalAngle = Math.atan2(target.z, target.x);
-				const verticalAngle = Math.asin(target.y) - 0.01;
+				const verticalAngle = Math.asin(target.y) - 0.035;
 
 				setCameraAngles(
 					horizontalAngle,

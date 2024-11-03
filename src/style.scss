@@ -213,7 +213,7 @@ canvas {
     text-align: center;
   }
   .accreditation {
-    max-height: 240px;
+    max-height: clamp(100px, 50vh, 250px);
     overflow-y: auto;
 
     .student-line {

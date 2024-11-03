@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
 html {
   color-scheme: dark;
 }
@@ -29,6 +32,7 @@ body {
   overflow-anchor: auto;
   height: 100dvh;
   perspective: 100dvh;
+  font-family: "Tajawal";
 }
 
 main {
@@ -189,6 +193,7 @@ canvas {
   max-width: clamp(20rem, 75%, 500px);
   position: fixed;
   z-index: 10;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(50px);
   // border: 1px solid rgba(255, 255, 255, 0.18);
@@ -203,14 +208,30 @@ canvas {
   opacity: 1;
   transition: all 1.5s ease-in-out;
 
+  .name {
+    text-align: center;
+  }
   .accreditation {
     max-height: 100px;
     overflow: auto;
+
+    .student-line {
+      display: block;
+      margin: 16px 8px;
+      border-top: 1px solid white;
+    }
   }
 }
 
 .student,
 #tooltip {
+
+
+  .time-container {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
   h3 {
     @apply text-3xl;
     line-height: 1.5;

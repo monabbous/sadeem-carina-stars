@@ -173,7 +173,8 @@ body:has(#students :target) {
   // }
 
   #actions {
-    display: flex;
+    // display: flex;
+    opacity: 1;
   }
 }
 
@@ -315,11 +316,12 @@ canvas {
   bottom: 7em;
   left: 50%;
   transform: translate(-50%, 0);
-  display: none;
   color: white;
   justify-content: space-between;
   z-index: 10;
-  transition: all var(--animation-duration) var(--animation-ease);
+  transition: all calc(var(--animation-duration) / 2) var(--animation-ease);
+  opacity: 0;
+  display: flex;
 
   button {
     @at-root :dir(ltr) & {

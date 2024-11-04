@@ -392,7 +392,7 @@ function animate() {
 			currentCameraAngles, {
 			radius: cameraAngles.radius,
 			duration: CAMERA_CHANGE_DURATION,
-			ease: 'power3.inOut',
+			ease: selectedObject && !isAbout ? 'power3.inOut' : undefined,
 		})
 	} else {
 
@@ -406,7 +406,7 @@ function animate() {
 				currentCameraAngles, {
 				...cameraAngles,
 				duration: isPointerDown ? 0.1 : CAMERA_CHANGE_DURATION,
-				ease: 'power3.inOut',
+				ease: selectedObject && !isAbout ? 'power3.inOut' : undefined,
 			})
 		}
 	}
@@ -424,7 +424,7 @@ function animate() {
 		cameraFovTween = gsap.to(
 			camera, {
 			fov: cameraDefaultFov,
-			ease: 'power3.inOut',
+			ease: selectedObject && !isAbout ? 'power3.inOut' : undefined,
 			duration: CAMERA_CHANGE_DURATION,
 			onUpdate: () => {
 				camera.updateProjectionMatrix();

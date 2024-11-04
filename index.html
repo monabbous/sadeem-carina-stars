@@ -19,6 +19,15 @@
       rel="stylesheet"
     />
 
+    <script defer>
+      const isChrome =
+        /Chrome/.test(navigator.userAgent) &&
+        /Google Inc/.test(navigator.vendor);
+
+      if (isChrome) {
+        document.documentElement.classList.add("is-chrome");
+      }
+    </script>
     <script type="module" src="src/main.ts"></script>
     <link
       rel="stylesheet"

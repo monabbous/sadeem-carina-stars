@@ -6,19 +6,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
 
 @mixin isChrome {
-  @at-root :is(body.is-chrome &, &.is-chrome) {
+  @at-root &:is(html).is-chrome,
+    html.is-chrome & {
     @content;
   }
 }
 
 @mixin isNotChrome {
-  @at-root :is(body.is-chrome &, &.is-chrome) {
+  @at-root &:is(html):not(.is-chrome),
+    html:not(.is-chrome) & {
     @content;
   }
 }
 
 html {
   color-scheme: dark;
+
+  --animation-duration: 3s;
+  --animation-ease: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 html,
@@ -84,7 +89,7 @@ header {
     transform: translate(-50%, 0);
     width: clamp(20rem, 100%, 1500px);
     z-index: 0;
-    transition: width 1.5s ease-in-out;
+    transition: width var(--animation-duration) var(--animation-ease);
     border-image: radial-gradient(
         50% 50% at 50% 125%,
         currentColor 0%,
@@ -97,6 +102,8 @@ header {
 
   a[href="#about"],
   button#fullscreen {
+    position: relative;
+    z-index: 2;
     @media (max-width: 768px) {
       position: fixed;
       transform: translate(-50%, 0);
@@ -127,6 +134,9 @@ button#fullscreen,
   opacity: 0.5;
   transition: all 0.7s ease-in-out;
   width: 1em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     opacity: 1;
@@ -190,7 +200,6 @@ canvas {
 }
 
 #students {
-
   @include isChrome() {
     transform-style: preserve-3d;
   }
@@ -238,7 +247,7 @@ canvas {
     transform: scale(1) translate3d(-50%, calc(50dvh - 100% - 1em), 0dvh);
   }
   opacity: 1;
-  transition: all 1.5s ease-in-out;
+  transition: all var(--animation-duration) var(--animation-ease);
 
   .name {
     text-align: center;
@@ -299,16 +308,18 @@ canvas {
 }
 
 #actions {
+  --extraWidth: 20vw;
   width: 100%;
-  max-width: calc(clamp(20rem, 75%, 500px) + 5rem);
+  max-width: calc(clamp(20rem, 75%, 500px) + 4rem + 0px);
   position: fixed;
-  bottom: 5em;
+  bottom: 7em;
   left: 50%;
   transform: translate(-50%, 0);
   display: none;
   color: white;
   justify-content: space-between;
-  z-index: 9;
+  z-index: 10;
+  transition: all var(--animation-duration) var(--animation-ease);
 
   button {
     @at-root :dir(ltr) & {
@@ -334,9 +345,13 @@ canvas {
   }
 }
 
+#actions.expand-animation {
+  animation: buttonsExpand var(--animation-duration) var(--animation-ease);
+}
+
 #about {
   opacity: 1;
-  transition: all 5s ease-in-out;
+  transition: all var(--animation-duration) var(--animation-ease);
   transform: translate3d(0, 2em, 0) rotateX(0deg);
   display: grid;
   position: relative;
@@ -375,7 +390,7 @@ canvas {
       opacity: 0;
       transform: translate(0, 100%);
     }
-    
+
     touch-action: none;
     transition-duration: 1.5s;
   }
@@ -401,4 +416,17 @@ canvas {
     1;
   border-style: solid;
   border-width: 1px;
+}
+
+@keyframes buttonsExpand {
+  0% {
+    max-width: calc(clamp(20rem, 75%, 500px) + 4rem + 0px);
+  }
+
+  50% {
+    max-width: calc(clamp(20rem, 75%, 500px) + 4rem + var(--extraWidth, 0px));
+  }
+  100% {
+    max-width: calc(clamp(20rem, 75%, 500px) + 4rem + 0px);
+  }
 }

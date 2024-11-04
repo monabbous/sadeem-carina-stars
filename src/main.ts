@@ -392,6 +392,7 @@ function animate() {
 			currentCameraAngles, {
 			radius: cameraAngles.radius,
 			duration: CAMERA_CHANGE_DURATION,
+			ease: 'power3.inOut',
 		})
 	} else {
 
@@ -405,6 +406,7 @@ function animate() {
 				currentCameraAngles, {
 				...cameraAngles,
 				duration: isPointerDown ? 0.1 : CAMERA_CHANGE_DURATION,
+				ease: 'power3.inOut',
 			})
 		}
 	}
@@ -422,6 +424,7 @@ function animate() {
 		cameraFovTween = gsap.to(
 			camera, {
 			fov: cameraDefaultFov,
+			ease: 'power3.inOut',
 			duration: CAMERA_CHANGE_DURATION,
 			onUpdate: () => {
 				camera.updateProjectionMatrix();
@@ -953,7 +956,7 @@ function onPointerMove(event: PointerEvent) {
 		} else {
 			hoveredObject = null;
 			hoveredObjectMaterial = null;
-			document.body.style.cursor = 'default';
+			document.body.style.removeProperty('cursor');
 		}
 	}
 
@@ -1062,6 +1065,15 @@ document.addEventListener('pointermove', onPointerMove, {
 let previousHash = window.location.hash.slice(1);
 // listen to on hash change
 window.addEventListener('hashchange', () => {
+
+	const actions = document.querySelector('#actions') as HTMLElement;
+
+	if (actions) {
+		actions.classList.remove('expand-animation');
+		void actions.offsetWidth;
+		actions.classList.add('expand-animation');
+	}
+
 	const id = window.location.hash.slice(1);
 	const currentSelectedId = selectedObject?.userData.element.id;
 
@@ -1187,8 +1199,3 @@ studentsLis.forEach((student) => {
 });
 
 
-const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-
-if (isChrome) {
-	document.body.classList.add('is-chrome');
-}

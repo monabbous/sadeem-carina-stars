@@ -532,15 +532,15 @@ function setupStudents() {
 
 		let geometry = tetrahedronGeometry;
 
-		if (rate > 60) {
+		if (rate >= 50) {
 			geometry = octahedronGeometry;
 		}
 
-		if (rate > 80) {
+		if (rate >= 70) {
 			geometry = dodecahedronGeometry;
 		}
 
-		if (rate > 90) {
+		if (rate >= 90) {
 			geometry = icosahedronGeometry;
 		}
 

@@ -322,11 +322,13 @@ canvas {
   transition: all calc(var(--animation-duration) / 2) var(--animation-ease);
   opacity: 0;
   display: flex;
+  pointer-events: none;
 
   button {
     @at-root :dir(ltr) & {
       transform: scale(-1, 1);
     }
+    pointer-events: auto;
     // flex: 1;
     display: inline-flex;
     align-items: center;

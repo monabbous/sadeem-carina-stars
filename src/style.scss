@@ -5,6 +5,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
 
+@mixin isChrome {
+  @at-root body.is-chrome & {
+    @content;
+  }
+}
+
+@mixin isNotChrome {
+  @at-root body:not(.is-chrome) & {
+    @content;
+  }
+}
+
 html {
   color-scheme: dark;
 }
@@ -31,7 +43,10 @@ body {
   overflow: hidden;
   overflow-anchor: auto;
   height: 100dvh;
-  perspective: 100dvh;
+
+  @include isChrome() {
+    perspective: 100dvh;
+  }
   font-family: "Tajawal";
 }
 
@@ -44,7 +59,9 @@ main {
   justify-content: center;
   width: 100%;
   grid-template-rows: min-content 1fr 0;
-  transform-style: preserve-3d;
+  @include isChrome() {
+    transform-style: preserve-3d;
+  }
 }
 
 header {
@@ -173,7 +190,10 @@ canvas {
 }
 
 #students {
-  transform-style: preserve-3d;
+
+  @include isChrome() {
+    transform-style: preserve-3d;
+  }
   width: 100%;
   position: fixed;
   top: 0;
@@ -185,7 +205,15 @@ canvas {
   //   display: none;
   // opacity: 0;
   pointer-events: none;
-  transform: scale(1) translate3d(-50%, calc(50dvh), 100dvh) rotateX(45deg);
+
+  transform: scale(1) translate(-50%, 50dvh);
+  @include isChrome() {
+    transform: scale(1) translate3d(-50%, calc(50dvh), 100dvh) rotateX(45deg);
+  }
+
+  @include isNotChrome() {
+    opacity: 0;
+  }
   width: 100%;
 }
 
@@ -205,7 +233,10 @@ canvas {
   top: 50dvh;
   left: 50vw;
   transform-origin: center center;
-  transform: scale(1) translate3d(-50%, calc(50dvh - 100% - 1em), 0dvh);
+  transform: scale(1) translate(-50%, calc(50dvh - 100% - 1em));
+  @include isChrome() {
+    transform: scale(1) translate3d(-50%, calc(50dvh - 100% - 1em), 0dvh);
+  }
   opacity: 1;
   transition: all 1.5s ease-in-out;
 
@@ -336,7 +367,15 @@ canvas {
   &:not(:target) {
     // display: none;
     pointer-events: none;
-    transform: translate3d(0, 100%, 100dvh) rotateX(90deg);
+    @include isChrome() {
+      transform: translate3d(0, 100%, 100dvh) rotateX(90deg);
+    }
+
+    @include isNotChrome() {
+      opacity: 0;
+      transform: translate(0, 100%);
+    }
+    
     touch-action: none;
     transition-duration: 1.5s;
   }

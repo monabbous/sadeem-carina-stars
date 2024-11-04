@@ -57,19 +57,39 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(30);
 
 
-const distantLight = new THREE.DirectionalLight(0xe4dcf2, 0.6);
+const distantLightIntensities = {
+	far: 1,
+	close: 0.5,
+}
+
+const ambientLightIntensities = {
+	far: 0.2,
+	close: 0.8,
+}
+
+const distantBehindLightIntensities = {
+	far: 2,
+	close: 0.5,
+}
+
+const distantBehindLight2Intensities = {
+	far: 1,
+	close: 0.5,
+}
+
+const distantLight = new THREE.DirectionalLight(0xe4dcf2, distantLightIntensities.far);
 distantLight.position.set(0, 0.5, 1);
 scene.add(distantLight);
 
-const ambientLight = new THREE.AmbientLight(0xb69bd7, 0.8);
+const ambientLight = new THREE.AmbientLight(0xb69bd7, ambientLightIntensities.far);
 scene.add(ambientLight);
 
 
-const distantBehindLight = new THREE.DirectionalLight(0xb69bd7, 2);
+const distantBehindLight = new THREE.DirectionalLight(0xb69bd7, distantBehindLightIntensities.far);
 distantBehindLight.position.set(1, 0, -1);
 scene.add(distantBehindLight);
 
-const distantBehindLight2 = new THREE.DirectionalLight(0x9bb3d7, 1);
+const distantBehindLight2 = new THREE.DirectionalLight(0x9bb3d7, distantBehindLight2Intensities.far);
 distantBehindLight2.position.set(1, 1, -1);
 scene.add(distantBehindLight2);
 
@@ -161,7 +181,7 @@ camera.updateProjectionMatrix();
 // convert the getCameraRadius() and cameraAngle to x, y, z coordinates
 
 const params = {
-	threshold: 0,
+	threshold: 0.05,
 	strength: 0.4,
 	radius: 0.7,
 	exposure: 0.4
@@ -215,7 +235,6 @@ function setup() {
 	renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-	https://rnlqm-156-38-40-122.a.free.pinggy.link
 
 	logoContainer.rotation.z = Math.PI * 2;
 	logoContainer.rotation.x = -Math.PI / 8 + Math.PI;
@@ -600,7 +619,7 @@ loader.load('logo.svg', function (data) {
 
 		// faintly glowing white material
 		const material = new THREE.MeshPhysicalMaterial({
-			color: 0xffffff,
+			color: 0xf2eef9,
 			emissive: 0x9773c2,
 			emissiveIntensity: 0,
 			metalness: 0,
@@ -741,18 +760,18 @@ function selectObject(firstIntersect: THREE.Intersection | null, updateHash = tr
 			if (selectedObject) {
 				gsap.to(
 					distantLight, {
-					intensity: 0.5,
+					intensity: distantLightIntensities.close,
 					duration: CAMERA_CHANGE_DURATION
 				})
 				gsap.to(
 					distantBehindLight, {
-					intensity: 0.5,
+					intensity: distantBehindLightIntensities.close,
 					duration: CAMERA_CHANGE_DURATION
 				})
 
 				gsap.to(
 					distantBehindLight2, {
-					intensity: 0.5,
+					intensity: distantBehindLight2Intensities.close,
 					duration: CAMERA_CHANGE_DURATION
 				})
 
@@ -778,20 +797,20 @@ function selectObject(firstIntersect: THREE.Intersection | null, updateHash = tr
 
 			gsap.to(
 				distantLight, {
-				intensity: 1,
+				intensity: distantLightIntensities.far,
 				duration: CAMERA_CHANGE_DURATION
 			})
 
 			gsap.to(
 				distantBehindLight, {
-				intensity: 2,
+				intensity: distantBehindLightIntensities.far,
 				duration: CAMERA_CHANGE_DURATION
 			}
 			)
 
 			gsap.to(
 				distantBehindLight2, {
-				intensity: 1,
+				intensity: distantBehindLight2Intensities.far,
 				duration: CAMERA_CHANGE_DURATION
 			}
 			)
@@ -1166,3 +1185,10 @@ studentsLis.forEach((student) => {
 		})
 	})
 });
+
+
+const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
+if (isChrome) {
+	document.body.classList.add('is-chrome');
+}

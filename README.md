@@ -1,5 +1,7 @@
 # Carina Testimonial Visualization
 
+![Sadeem Carina Preview Image](https://github.com/monabbous/sadeem-carina-stars/blob/master/carina-preview.png?raw=true)
+
 ## Overview
 Carina is a summer training program funded by [Sadeem Technology](https://sadeem-tech.com), providing free training for university and college students. The program aims to bridge the gap between theoretical education and real-world job market demands. This project is a visual testimonial by Sadeem Technology, representing the trainees as 3D stars.
 
@@ -24,7 +26,7 @@ The project is inspired by the **Carina Nebula**, a vast cosmic cloud hosting mu
 To run the project locally:
 1. Clone the repository:
    ```sh
-   git clone [<repository-url>](https://github.com/monabbous/sadeem-carina-stars)
+   git clone https://github.com/monabbous/sadeem-carina-stars
    cd sadeem-carina-stars
    ```
 2. Install dependencies:
